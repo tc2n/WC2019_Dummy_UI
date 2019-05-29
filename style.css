@@ -1,0 +1,203 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+:root {
+  --color-back: linear-gradient(180deg,rgb(236, 236, 236),#cfd8e2 40rem);
+  --color-score-back: linear-gradient(180deg,#32006A 30%,#1C0037 60%);
+  --color-pink: linear-gradient(90deg, rgba(0,0,0,0) 30%, #e6214f 70%);
+  --color-powerplay: linear-gradient(90deg, rgba(0,0,0,0) 30%, #5B7CE7 90%);
+  --color-text-1: #6b1a8b;
+  --color-text-2: #fff;
+  --color-text-3: #e6214f;
+  --font-weight-bold: 700;
+  --font-weight-mid: 500;
+  --font-weight-light: 300;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;}
+
+body {
+  max-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: calc(100vh - 12rem) 12rem;
+  font-size: 1.8rem;
+  background-image: url(./images/back.jpg);
+  background-size: cover;
+  color: var(--color-text-1);
+}
+
+.container {
+    width: 100vw;
+    margin-bottom: 5rem;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 1px;
+}
+
+.team {
+  background-image: var(--color-back);
+  position: relative;
+}
+
+.team_1 {
+  border-radius: 0 50rem 50rem 0;
+}
+.team_1_image {
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+}
+
+.team_2 {
+  border-radius: 50rem 0 0 50rem;
+}
+.team_2_image {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+
+.info {
+  background-image: var(--color-back);
+  border-radius: 50rem;
+  display: grid;
+  grid-template-columns: repeat(21, 1fr);
+  grid-column-gap: 1rem;
+  align-items: center;
+}
+
+.batsmen {
+  grid-column: 2 / 7;
+  list-style: none;
+  font-weight: var(--font-weight-mid);
+}
+
+.batsman {
+  display: flex;
+  justify-content: space-around;
+}
+.batsman > span {
+  font-weight: var(--font-weight-bold);
+}
+.batsman_onstrike {
+  position: relative;
+}
+.batsman_onstrike::before {
+  content: "▶";
+  color: var(--color-text-3);
+  font-size: 1.3rem;
+  position: absolute;
+  left: 0;
+}
+
+.batsman > span > span {
+  font-weight: var(--font-weight-light);
+  font-size: 1.3rem;
+}
+
+.scorecard {
+  background-image: var(--color-score-back);
+  color: var(--color-text-2);
+  height: 90%;
+  border-radius: 50rem;
+  grid-column: 7 /span 8;
+
+  display: grid;
+  grid-template-rows: [score] 1fr [score-end runrate] 0.8fr [runrate-end];
+  grid-template-columns: [gap] 0.2fr [scorestart] 3.2fr [scoreend] .8fr [overs] 1fr [overs-end] 0.2fr [endgap];
+
+  transition: all 0.5s ease-in;
+}
+
+.scorecard_score {
+  grid-row: score / span 1;
+  grid-column: scorestart / scoreend;
+
+  background-image: var(--color-pink);
+  border-radius: 50rem;
+  margin-top: .4rem;
+  font-weight: var(--font-weight-bold);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.teams > span {
+  font-weight: var(--font-weight-light);
+  font-size: 1.4rem;
+  color: rgba(236, 236, 236, 0.7);
+}
+
+.scorecard_powerplay {
+  grid-row: score / span 1;
+  grid-column: scoreend / span 1;
+
+  background-image: var(--color-powerplay);
+  border-radius: 50rem;
+  margin-top: .4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scorecard_overs {
+  grid-row: score / span 1;
+  grid-column: overs / overs-end;
+  margin-top: .4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scorecard_runrate {
+  grid-row: runrate / runrate-end;
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.bowler {
+  grid-column: 15 / -2;
+}
+.bowler_stat {
+  display: flex;
+  justify-content: space-between;
+}
+.bowler_stat > span {
+  font-weight: var(--font-weight-bold);
+}
+.bowler_stat > span > span {
+  font-weight: var(--font-weight-light);
+  font-size: 1.3rem;
+}
+
+.bowls {
+  display: flex;
+  list-style: none;
+}
+
+.bowl {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-text-1);
+  color: var(--color-text-2);
+  margin: .1rem;
+  text-align: center;
+}
